@@ -4,6 +4,10 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 app = FastAPI()
 
+@app.get("/")
+def read_root():
+    return {"message": "API Run!"}
+
 class MedicalRecord(BaseModel):
     text: str
 
