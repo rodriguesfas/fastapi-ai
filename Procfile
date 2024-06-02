@@ -1,0 +1,1 @@
+web: uvicorn app:app --host=${FLASK_RUN_HOST} --port=${FLASK_RUN_PORT:-8000}
