@@ -7,4 +7,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+COPY binder/apt.txt /tmp/apt.txt
+RUN apt-get update && xargs -a /tmp/apt.txt apt-get install -y
+
+COPY binder/start /app/start
+RUN chmod +x /app/start
+
+CMD ["/app/start"]
